@@ -19,7 +19,7 @@ feature 'user signs up', %q{
     fill_in "Password confirmation", with: "meow1234"
     click_on "Sign up"
 
-    expect(page).to have_content "Meow! You have signed up succesfully."
+    expect(page).to have_content "Meow! You have signed up successfully."
   end
 
   scenario "user signs up without required information" do
