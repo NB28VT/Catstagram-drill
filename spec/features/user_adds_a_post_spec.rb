@@ -19,7 +19,6 @@ feature "user adds a post", %q{
 
     visit new_post_path
     attach_file 'Image', File.join(Rails.root, '/spec/fixtures/sleeping_cat.jpeg')
-
     fill_in "Description", with: "Sleeping cat"
     click_on "Create Post"
 
