@@ -22,7 +22,7 @@ feature "user adds a post", %q{
     fill_in "Description", with: "Sleeping cat"
     click_on "Create Post"
 
-    expect(page).to have_content "Post created succesfully"
+    expect(page).to have_content "Post created successfully."
   end
 
   scenario "user adds a post with invalid attributes" do
@@ -32,6 +32,6 @@ feature "user adds a post", %q{
     visit new_post_path
     click_on "Create Post"
 
-    expect(page).to have_content "There was some errors with your Post."
+    expect(page).to have_content "There were some errors with your post."
   end
 end
