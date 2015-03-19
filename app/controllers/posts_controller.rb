@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create]
+
+
   def create
     @post = current_user.posts.build(post_params)
 
