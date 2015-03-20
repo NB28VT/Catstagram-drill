@@ -30,7 +30,7 @@ feature "user creates meow for a post", %q{
     end
 
     scenario "user cannot Meow a second time for a Post" do
-      click_button "Meow"
+      click_button "Meow", exact: true
       expect(page).to_not have_button "We heard your Meow!"
     end
   end
