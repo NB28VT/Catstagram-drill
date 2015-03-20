@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
 
+  def index
+    @posts = Post.all
+  end
+
 
   def create
     @post = current_user.posts.build(post_params)

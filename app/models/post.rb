@@ -7,4 +7,9 @@ class Post < ActiveRecord::Base
   validates :description, length: { maximum: 140 }
 
   mount_uploader :image, PostImageUploader
+
+  def self.by_recency
+    order(created_at: :desc)
+  end
+
 end
