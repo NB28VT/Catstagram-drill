@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Meow do
-  before :each { FactoryGirl.create(:meow) }
+  before(:each) { FactoryGirl.create(:meow) }
 
   it { should belong_to :user }
   it { should belong_to :post }

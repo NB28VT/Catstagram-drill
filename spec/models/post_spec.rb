@@ -11,6 +11,8 @@ describe Post do
   it { should have_valid(:description).when(nil,"", ("a"*140)) }
   it { should_not have_valid(:description).when("a"*141) }
 
+  it { should have_many(:meows).dependent(:destroy)}
+
 
     describe ".by_recency" do
       it "orders the posts by most recent first" do
