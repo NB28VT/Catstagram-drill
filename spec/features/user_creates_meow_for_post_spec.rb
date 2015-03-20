@@ -35,7 +35,7 @@ feature "user creates meow for a post", %q{
     end
   end
 
-    scenario "unauthenticated suer cannot create a Meow" do
+    scenario "unauthenticated user cannot create a Meow" do
       visit root_path
       expect(page).to_not have_button "Meow"
     end

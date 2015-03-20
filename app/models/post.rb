@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_many :meows,
       dependent: :destroy,
       inverse_of: :post
-      
+
   validates :user, presence: true
   validates :image, presence: true
   validates :description, length: { maximum: 140 }
@@ -14,6 +14,10 @@ class Post < ActiveRecord::Base
 
   def self.by_recency
     order(created_at: :desc)
+  end
+
+  def has_meow_from?(user)
+    meows.find_by(user_id: user.id).present?
   end
 
 end
