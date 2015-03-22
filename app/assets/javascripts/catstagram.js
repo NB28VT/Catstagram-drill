@@ -9,12 +9,13 @@ $(document).ready(function() {
       url: $form.attr('action'),
       dataType: "json",
       success: function(meow){
+        alert("success! You meowed!");
         // Create the string version of the form action
         action = '/posts/' + meow.post_id + '/meows/' + meow.id;
 
         // Create the new form
         $newForm = $('<form>').attr({
-          action = action,
+          action: action,
           method: 'delete',
           'data-meow-button': 'delete'
         });
@@ -31,15 +32,41 @@ $(document).ready(function() {
     });
   });
 
-  $('[data-meow-button="delete"]').on('submit', function(event){
+  $('[data-post-id]').on('submit', '[data-meow-button="delete"]', function(event) {
+
     event.preventDefault();
+
+    $form = $(event.currentTarget);
+
 
     $.ajax({
       type: "DELETE",
       url: $form.attr('action'),
       dataType: "json",
       success: function(){
-        alert("MEOW DELETED!");
+        alert("Meow Deleted!");
+        // Find the parent wrapper div so that we can use its data-post-id
+        $post = $form.closest('[data-post-id]');
+
+        // Create the string version of the form action
+        action = '/posts/' + $post.data('post-id') + '/meows';
+
+        // Create the new form for creating a Meow
+        $newForm = $('<form>').attr({
+          action: action,
+          method: 'post',
+            'data-meow-button': 'create'
+        });
+
+        // Create the new submit input
+        $meowButton = $('<input>').attr({type: 'submit', value: 'Meow'});
+
+        // Append the new submit input to the new form
+        $newForm.append($meowButton);
+
+        // Replace the old create form with the new remove form
+        $form.replaceWith($newForm);
+
       }
     });
   });
